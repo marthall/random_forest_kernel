@@ -76,14 +76,14 @@ def get_kernel(train_data, test_data, label):
 
     dataset = np.concatenate((train_data, test_data), axis=0)
 
-    SAMPLE_SIZE = len(train_data)
-    M = 400
+    SAMPLE_SIZE = len(dataset)
+    M = 100
 
     #Loop that generates samples of the PDF
     kernel_list = np.empty([M, SAMPLE_SIZE, SAMPLE_SIZE])
     for m in range(M):
-        # print("Building partial kernel: {}".format(m))
-        kernel_list[m,:,:] = get_partial_kernel(forest, train_data)
+        print("Building partial kernel: {}".format(m))
+        kernel_list[m,:,:] = get_partial_kernel(forest, dataset)
 
     #Average the samples to compute the kernel
     kernel = np.mean(kernel_list, axis=0)

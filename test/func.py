@@ -73,6 +73,6 @@ def select_parameters(C,gamma,features,measures):
 
 def normalize_features(features):
     out = features - np.mean(features, axis=0)
-    out = np.divide(out,np.var(features,axis=0))
+    out = np.divide(out,np.std(features,axis=0))
 
     return out
